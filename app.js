@@ -49,3 +49,6 @@ function eliminarLocalstorage(){
     localStorage.removeItem("tipo");
     mostrar();
 }
+function editarLocalstorage(){
+    mostrar();
+}
