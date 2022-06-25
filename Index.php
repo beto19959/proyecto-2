@@ -20,6 +20,12 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="app.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- MDBootstrap Datatables  -->
+	<link href="Scripts/css/addons/datatables.min.css" rel="stylesheet">
+	<!-- MDBootstrap Datatables  -->
+	<script type="text/javascript" src="Scripts/js/addons/datatables.min.js"></script>
+
     <title>Proyecto 2</title>
 </head>
 <body>
@@ -64,9 +70,9 @@
     <hr>
 <div class="container">   
     <div class="mb-4 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">SKU</label>
+        <label for="sku" class="col-sm-2 col-form-label">SKU</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control form-control-user text-center" id="staticEmail" >
+          <input type="text"  class="form-control form-control-user text-center" id="sku" >
         </div>
       </div>
      
@@ -95,19 +101,27 @@
          </div>  
      </div>
      <div class="form-row col-md-12">
-          <table class="table table-dark table-striped">
+          <table class="table table-dark table-striped"id="tablastorage" >
            <thead>
              <tr>
-               <th scope="col">SKU</th>
-               <th scope="col">Nombre</th>
-               <th scope="col">Precio</th>
-               <th scope="col">Tipo</th>
-               <th scope="col">Acciones</th>
+               <th >SKU</th>
+               <th >Nombre</th>
+               <th >Precio</th>
+               <th >Tipo</th>
+               <th >Acciones</th>
              </tr>
            </thead>
-           <tbody>
-             
-           </tbody>
+           <tbody id="tablastoragebody">
+					<tr>
+						<td colspan="5">
+							<div class="d-flex justify-content-center w-100">
+								<div class="spinner-border" role="status">
+									<span class="sr-only">Loading...</span>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
          </table>
     </div>
 </div>
@@ -120,3 +134,10 @@
 </footer>
 </body>
 </html>
+<script>
+
+$( window ).on( 'load', function () {
+    mostrar();
+} );
+
+</script>
