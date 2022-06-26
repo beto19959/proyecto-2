@@ -1,3 +1,4 @@
+
 function GuardarLocalstorage(){
     var sku=$("#sku").val();
     var Nombre=$("#Nombre").val();
@@ -10,10 +11,17 @@ if(!sku.trim()||!Nombre.trim()||!pre.trim()||tipo==0){
         text: 'Todos los campos son obligatorios!'
       })
 }else{
-    localStorage.setItem("sku",sku);
-    localStorage.setItem("Nombre",Nombre);
-    localStorage.setItem("pre",pre);
-    localStorage.setItem("tipo",tipo);
+    var contador=localStorage.getItem("conta");
+    if(contador==null){
+        contador=1;
+    }else{
+        contador=parseInt(contador)+1;
+    }
+    localStorage.setItem("conta",contador);
+    localStorage.setItem("sku"+contador,sku);
+    localStorage.setItem("Nombre"+contador,Nombre);
+    localStorage.setItem("pre"+contador,pre);
+    localStorage.setItem("tipo"+contador,tipo);
     Swal.fire({
         icon: 'success',
         title: 'Datos Agregados!',
@@ -24,31 +32,70 @@ if(!sku.trim()||!Nombre.trim()||!pre.trim()||tipo==0){
 mostrar();
 }
 function mostrar(){
-    var sku = localStorage.getItem("sku");
-    var Nombre = localStorage.getItem("Nombre");
-    var pre = localStorage.getItem("pre");
-    var tipo = localStorage.getItem("tipo");
     $("#tablastoragebody").empty();
-    if(sku==null){
-        $('#tablastoragebody').append("<tr><th colspan='5' class='text-center'>No hay elementos para mostrar</th></tr>");
-    }else{
-        $("#tablastoragebody").append('<tr class="text-center" onClick="modalProyecto(this)">',
-        '<td>'+ sku+ '</td>', 
-        '<td>'+ Nombre+ '</td>',
-        '<td>'+ pre+ '</td>',
-        '<td>'+ tipo + '</td>',
-        '<td><div class="btn btn-primary btn-rounded m-4"OnClick="editarLocalstorage();"> Editar</div><div class="btn btn-danger btn-rounded m-4"OnClick="eliminarLocalstorage();"> Eliminar</div></td>',
-        '</tr>');
+    var conta=localStorage.getItem("conta");
+
+    for (var i = 1; i <= conta; i++) {
+
+        var sku = localStorage.getItem("sku"+[i]);
+        var Nombre = localStorage.getItem("Nombre"+[i]);
+        var pre = localStorage.getItem("pre"+[i]);
+        var tipo = localStorage.getItem("tipo"+[i]);
+        
+        if(sku!=null){
+            $("#tablastoragebody").append('<tr class="text-center"',
+            '<td>'+ sku+ '</td>', 
+            '<td>'+ Nombre+ '</td>',
+            '<td>'+ pre+ '</td>',
+            '<td>'+ tipo + '</td>',
+            '<td><div class="btn btn-primary btn-rounded m-3"OnClick="editarLocalstorage(this);" data-i="'+[i]+'" data-sku="'+sku+'" data-nombre="'+Nombre+'"data-pre="'+pre+'"data-tipo="'+tipo+'"> Editar</div><div class="btn btn-danger btn-rounded m-3"OnClick="eliminarLocalstorage('+[i]+');"> Eliminar</div></td>',
+            '</tr>');
+        }
     }
-  
 }
-function eliminarLocalstorage(){
-    localStorage.removeItem("sku");
-    localStorage.removeItem("Nombre");
-    localStorage.removeItem("pre");
-    localStorage.removeItem("tipo");
+function eliminarLocalstorage(i){
+    localStorage.removeItem("sku"+i);
+    localStorage.removeItem("Nombre"+i);
+    localStorage.removeItem("pre"+i);
+    localStorage.removeItem("tipo"+i);
     mostrar();
 }
-function editarLocalstorage(){
+function editarLocalstorage(event){
+    $("#exampleModal").modal('show');
+    var sku = $(event).data('sku');
+    var Nombre = $(event).data('nombre');
+    var pre = $(event).data('pre');
+    var tipo = $(event).data('tipo');
+    var i = $(event).data('i');
+    
+    $("#Nombre1").val(Nombre);
+    $("#pre1").val(pre);
+    $("#tipo1").val(tipo);
+	$("#exampleModal").attr("data-id", sku);
+	$("#exampleModal").attr("data-i", i);
     mostrar();
+}
+function ActualizarLocalstorage(){
+    var sku = $("#exampleModal").attr("data-id");
+    var i = $("#exampleModal").attr("data-i");
+    var Nombre =  $("#Nombre1").val();
+    var pre = $("#pre1").val();
+    var tipo = $("#tipo1").val();
+
+    localStorage.setItem("sku"+i,sku);
+    localStorage.setItem("Nombre"+i,Nombre);
+    localStorage.setItem("pre"+i,pre);
+    localStorage.setItem("tipo"+i,tipo); 
+    Swal.fire({
+        icon: 'success',
+        title: 'Datos Actualizados!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      mostrar();
+      $("#exampleModal").modal('hide');
+}
+function sku()
+{
+    var conteo=conteo+1;
 }

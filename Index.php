@@ -98,7 +98,7 @@
          <div class="form-group col-md-12 d-flex align-items-center justify-content-center ">
              <div class="btn btn-success mt-3 btn-rounded"  id="b1" OnClick="GuardarLocalstorage();"><i class="far fa-share"></i> Guardar Información</div>
          </div> 
-         </div>  
+      </div>  
      </div>
      <div class="form-row col-md-12">
           <table class="table table-dark table-striped"id="tablastorage" >
@@ -132,12 +132,50 @@
            </div>
        </div>
 </footer>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar datos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="form-row col-md-12">
+         <div class="form-group col-md-12">
+             <label for="Nombre">Nombre</label>
+             <input type="text" id="Nombre1" class="form-control  text-center" />
+         </div>
+         <div class="form-group col-md-12">
+             <label for="pre">Precio</label>
+             <input type="text" id="pre1" class="form-control  text-center" />
+         </div>
+         <div class="form-group col-md-12">
+             <label for="tipo">Tipo</label>
+             <select name="tipo" id="tipo1" class="form-control form-control-user text-center">
+	        	    <option value="0"></option>
+	        	    <option value="computo">Equipo de computo</option>
+	        	    <option value="electrónico">Equipo electrónico</option>
+	        	    <option value="Papeleria">Papeleria</option>
+	        	    <option value="Papeleria">Mueble</option>
+	         </select>
+         </div>
+      </div>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" OnClick="ActualizarLocalstorage();">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
 <script>
 
 $( window ).on( 'load', function () {
     mostrar();
+    sku();
 } );
 
 </script>
