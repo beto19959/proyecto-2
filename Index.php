@@ -96,7 +96,8 @@
 	         </select>
          </div>
          <div class="form-group col-md-12 d-flex align-items-center justify-content-center ">
-             <div class="btn btn-success mt-3 btn-rounded"  id="b1" OnClick="GuardarLocalstorage();"><i class="far fa-share"></i> Guardar Información</div>
+             <div class="btn btn-success mt-3 btn-rounded m-4"  id="b1" OnClick="GuardarLocalstorage();"> Guardar Información</div>
+             <div class="btn btn-danger mt-3 btn-rounded m-4"  id="b1" OnClick="borrarLocalstorage();">Borrar Tabla</div>
          </div> 
       </div>  
      </div>

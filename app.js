@@ -99,3 +99,10 @@ function sku()
 {
     var conteo=conteo+1;
 }
+function borrarLocalstorage(){
+    var conf=confirm("¿Quieres borrar todos los datos de la tabla?");
+    if(conf){
+        localStorage.clear();
+        mostrar();
+    }
+}
