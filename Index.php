@@ -89,10 +89,10 @@
              <label for="tipo">Tipo</label>
              <select name="tipo" id="tipo" class="form-control form-control-user text-center">
 	        	    <option value="0"></option>
-	        	    <option value="computo">Equipo de computo</option>
-	        	    <option value="electrónico">Equipo electrónico</option>
+	        	    <option value="Computo">Equipo de computo</option>
+	        	    <option value="Electrónico">Equipo electrónico</option>
 	        	    <option value="Papeleria">Papeleria</option>
-	        	    <option value="Papeleria">Mueble</option>
+	        	    <option value="Mueble">Mueble</option>
 	         </select>
          </div>
          <div class="form-group col-md-12 d-flex align-items-center justify-content-center ">
@@ -158,7 +158,7 @@
 	        	    <option value="computo">Equipo de computo</option>
 	        	    <option value="electrónico">Equipo electrónico</option>
 	        	    <option value="Papeleria">Papeleria</option>
-	        	    <option value="Papeleria">Mueble</option>
+	        	    <option value="Mueble">Mueble</option>
 	         </select>
          </div>
       </div>  
